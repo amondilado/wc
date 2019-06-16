@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Native Web components</title>
+        <style>
+            * {box-sizing: border-box;}
+            body {font-family: sans-serif;}
+        </style>
+        <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+        <custom-style>
+            <style>
+                html {
+                    --spinner-btn-border-radius: 20px;
+                    --spinner-decrement-color: #333;
+                }
+                numeric-spinner {
+                    --spinner-increment-color: blue;
+                    --spinner-total: {
+                        background-color: pink;
+                        padding: 10px;
+                        display: block;
+                    };
+                }
+            </style>
+        </custom-style>
+        <script type="module" src="./src/price-spinner.js"></script>
+    </head>
+    <body>
+        <h1>Playground Web components</h1>
+
+        <h2>Numeric Spinner</h2>
+        <numeric-spinner value="10" step="5" min="5" max="20"></numeric-spinner>
+        <hr/>
+        <h2>Price Spinner</h2>
+        <p>item price: 5&euro;</p>
+        <price-spinner price="5" value="2" step="1" min="1" max="20"></price-spinner>
+
+        <script>
+            window.addEventListener('WebComponentsReady', function(){
+                // console.log('WebComponentsReady');
+                this.addEventListener('valueChanged', function(e){
+                    console.log('valueChanged v: ', e.detail);
+                });
+            });
+        </script>
+    </body>
+</html>

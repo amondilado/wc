@@ -1,0 +1,20 @@
+{
+  "name": "web-components",
+  "version": "1.0.0",
+  "description": "web components playground",
+  "repository": "https://github.com/amondilado/wc",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kampisiou.main",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "latest"
+  },
+  "devDependencies": {
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-strip-comments": "^2.5.2"
+  }
+}
