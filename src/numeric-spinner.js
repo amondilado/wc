@@ -1,4 +1,7 @@
 import { template } from './spinner-template.js';
+import '../node_modules/@webcomponents/shadycss/apply-shim.min.js';
+
+window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, 'numeric-spinner');
 
 export class NumericSpinner extends HTMLElement {
     constructor() {
@@ -12,15 +15,15 @@ export class NumericSpinner extends HTMLElement {
 
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
-
-        window.ShadyCSS && window.ShadyCSS.prepareTemplate(this.template, 'numeric-spinner');
     }
 
     connectedCallback() {
-        this.attachShadow({mode:'open'});
-        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+        window.ShadyCSS &&
+        window.ShadyCSS.styleElement(this);
 
-        window.ShadyCSS && ShadyCSS.styleElement(this);
+        this.attachShadow({mode:'open'});
+
+        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
 
         // Shadow DOM
         this.valueElement = this.shadowRoot.querySelector('input');
@@ -47,7 +50,6 @@ export class NumericSpinner extends HTMLElement {
     }
 
     attributeChangedCallback(attr, o, n) {
-        // console.log('_attributeChanged: ',attr,' | o: ',o,' | n: ',n,'\nel',this.valueElement);
         if (attr === 'value') {
             this.valueElement && this.valueElement.setAttribute('value',n);
 
@@ -103,7 +105,6 @@ export class NumericSpinner extends HTMLElement {
         return parseInt(this.getAttribute('step'));
     }
     set step(step) {
-        // console.log('_SET step ',step);
         this.setAttribute('step', parseInt(step));
     }
     // Min

@@ -7,38 +7,35 @@
         <style>
             * {box-sizing: border-box;}
             body {font-family: sans-serif;margin: 0 auto;max-width: 600px;text-align: center;}
-            numeric-spinner {
+            price-spinner {
                 font-weight: bold;
                 font-size: 18px;
+                flex-wrap: wrap;
             }
         </style>
-
         <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
         <custom-style>
             <style>
                 html {
+                    --spinner-btn-border-radius: 20px;
                     --spinner-decrement-color: #333;
                 }
-                numeric-spinner {
+                price-spinner {
                     --spinner-increment-color: blue;
-                    --apply-rules: {border-color: green;};
+                    --spinner-total: {
+                        background-color: pink;
+                        padding: 30px;
+                    };
                 }
             </style>
         </custom-style>
     </head>
     <body>
-        <h1>Numeric Spinner</h1>
-        <numeric-spinner value="10" step="5" min="5" max="20"></numeric-spinner>
+        <h1>Price Spinner</h1>
+
+        <price-spinner price="5" value="2" step="1" min="1" max="20"></price-spinner>
 
         <script type="module" src="./src/price-spinner.js"></script>
-
-        <script>
-            window.addEventListener('WebComponentsReady', function() {
-                this.addEventListener('valueChanged', function(e){
-                    console.log('valueChanged v: ', e.detail);
-                });
-            });
-        </script>
     </body>
 </html>

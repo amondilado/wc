@@ -11,6 +11,7 @@ class PriceSpinner extends NumericSpinner {
     }
     connectedCallback() {
         super.connectedCallback();
+        
         this.priceElement = this.shadowRoot.querySelector('#price');
         this.priceElement.innerHTML = this.price * this.value + '&euro;';
     }

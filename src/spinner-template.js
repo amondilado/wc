@@ -2,11 +2,12 @@
 export const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    * {
-        box-sizing: border-box;
+    * { box-sizing: border-box; }
+    :host {
+        display:flex;
+        justify-content: center;
     }
-    /* :host { display:block; @apply --spinner-total; } */
-    .spinner {margin-bottom: 1rem;}
+
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button {
         -webkit-appearance: textfield; apperarance:textfield;
@@ -14,23 +15,25 @@ template.innerHTML = `
     }
     input {
         -moz-appearance: textfield;
-        border: 1px solid #999;
+        border: 2px solid #999;
         cursor: default;
-        margin-left: 6px;
-        margin-right: 6px;
-        padding: 6px;
+        margin-left: 1em;
+        margin-right: 1em;
+        padding: .5em 1em;
         text-align: center;
-        width: var(--spinner-input-width,52px);
+        width: var(--spinner-input-width,80px);
+        @apply --apply-rules;
     }
     input:focus, button:focus {
         outline: 0;
     }
     button {
         background-color: #fff;
-        border: 1px solid currentColor;
+        border: 2px solid currentColor;
         border-radius: var(--spinner-btn-border-radius,2px);
         cursor: pointer;
-        padding: 6px 10px;
+        font: inherit;
+        padding: .5em .75em;
     }
     button:hover {
         color: #fff;
@@ -52,9 +55,8 @@ template.innerHTML = `
         background-color: var(--spinner-increment-color,green);
     }
 </style>
-<div class="spinner">
-    <button type="button" decrement>minus</button>
-    <input type="number" name="spinner-val" value="0" readonly tabindex="-1"/>
-    <button type="button" increment>plus</button>
-</div>
+
+<button type="button" decrement>-</button>
+<input type="number" name="spinner-val" value="0" readonly tabindex="-1"/>
+<button type="button" increment>+</button>
 `;
