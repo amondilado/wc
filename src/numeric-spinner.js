@@ -1,5 +1,5 @@
 import { template } from './spinner-template.js';
-import '../node_modules/@webcomponents/shadycss/apply-shim.min.js';
+// import '../node_modules/@webcomponents/shadycss/apply-shim.min.js';
 
 window.ShadyCSS && window.ShadyCSS.prepareTemplate(template, 'numeric-spinner');
 
